@@ -53,7 +53,7 @@ function Shop()
 			for k, v in pairs(Config.Shop.Type.Nourritures) do
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..v.prix.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem2', v)
+						TriggerServerEvent('xed:buyitem', v, false)
 					end
 				})
 			end
@@ -61,7 +61,7 @@ function Shop()
 			for k, v in pairs(Config.Shop.Type.Boissons) do
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..v.prix.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem2', v)
+						TriggerServerEvent('xed:buyitem', v, false)
 					end
 				})
 			end
@@ -76,7 +76,7 @@ function Shop()
 				local price = v.prix * 1.1
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..price.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem1', v)
+						TriggerServerEvent('xed:buyitem', v, true)
 					end
 				})
 			end
@@ -85,7 +85,7 @@ function Shop()
 				local price = v.prix * 1.1
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..price.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem1', v)
+						TriggerServerEvent('xed:buyitem', v, true)
 					end
 				})
 			end
