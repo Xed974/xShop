@@ -18,7 +18,7 @@ AddEventHandler('xed:buyitem', function(v, type)
 			return TriggerClientEvent('esx:showAdvancedNotification', _source, 'Fleeca Bank', 'Virement', 'Paiement ~r~refusé~s~ !', 'CHAR_BANK_FLEECA', 2);
 		end
 	else
-		if (playerMoney.cash >= price) then
+		if (playerMoney.cash >= v.prix) then
 			canBuy = true;
 			xPlayer.removeMoney(v.prix)
 			TriggerClientEvent('esx:showAdvancedNotification', _source, 'Vendeur', 'Interraction', 'Et voilà, ~g~'..v.prix..'$ ~s~en plus dans ma caisse, merci de votre visite !', 'CHAR_CHEF', 9)
