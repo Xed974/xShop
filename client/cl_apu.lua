@@ -16,6 +16,7 @@ local subMenu2 = RageUI.CreateSubMenu(mainMenu, "", "Interaction")
 mainMenu.Display.Header = true 
 mainMenu.Closed = function()
   open = false
+  FreezeEntityPosition(PlayerPedId(), false)
 end
 
 --- Function Shop
@@ -93,11 +94,6 @@ function Shop()
 		
 		Wait(0)
 	   end
-
-	   	if not RageUI.Visible(mainmenu) and not RageUI.Visible(subMenu1) and not RageUI.Visible(subMenu2) then
-			FreezeEntityPosition(PlayerPedId(), false)
-		end
-
 		end)
  	end
 end
