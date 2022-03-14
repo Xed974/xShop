@@ -15,7 +15,8 @@ local subMenu1 = RageUI.CreateSubMenu(mainMenu, "", "Interaction")
 local subMenu2 = RageUI.CreateSubMenu(mainMenu, "", "Interaction")
 mainMenu.Display.Header = true 
 mainMenu.Closed = function()
-  open = false
+  	open = false
+	FreezeEntityPosition(PlayerPedId(), false)
 end
 
 --- Function Shop
@@ -53,7 +54,7 @@ function Shop()
 			for k, v in pairs(Config.Shop.Type.Nourritures) do
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..v.prix.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem2', v)
+						TriggerServerEvent('xed:buyitem', v, false)
 					end
 				})
 			end
@@ -61,7 +62,7 @@ function Shop()
 			for k, v in pairs(Config.Shop.Type.Boissons) do
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..v.prix.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem2', v)
+						TriggerServerEvent('xed:buyitem', v, false)
 					end
 				})
 			end
@@ -76,7 +77,7 @@ function Shop()
 				local price = v.prix * 1.1
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..price.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem1', v)
+						TriggerServerEvent('xed:buyitem', v, true)
 					end
 				})
 			end
@@ -85,7 +86,7 @@ function Shop()
 				local price = v.prix * 1.1
 				RageUI.Button(v.Label, nil, {RightLabel = "~g~"..price.."$"}, true , {
 					onSelected = function()
-						TriggerServerEvent('xed:buyitem1', v)
+						TriggerServerEvent('xed:buyitem', v, true)
 					end
 				})
 			end
@@ -93,11 +94,6 @@ function Shop()
 		
 		Wait(0)
 	   end
-
-	   	if not RageUI.Visible(mainmenu) and not RageUI.Visible(subMenu1) and not RageUI.Visible(subMenu2) then
-			FreezeEntityPosition(PlayerPedId(), false)
-		end
-
 		end)
  	end
 end
